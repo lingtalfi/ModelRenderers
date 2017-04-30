@@ -31,6 +31,10 @@ Models are found here: https://github.com/lingtalfi/Models
 History Log
 ------------------
     
+- 1.1.0 -- 2017-04-30
+
+    - add DataTable renderer
+    
 - 1.0.0 -- 2017-04-22
 
     - initial commit

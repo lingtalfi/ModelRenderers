@@ -106,6 +106,7 @@ class DataTableRendererUtil
             'columns' => implode(',', array_keys($model['headers'])),
             'page' => $model['page'],
             'nipp' => $model['nipp'],
+            'textUseSelectedRowsEmptyWarning' => $model['textUseSelectedRowsEmptyWarning'],
         ];
         foreach ($model['headers'] as $columnId => $label) {
             $sort = 'none';

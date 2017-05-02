@@ -45,10 +45,19 @@ class DataTableRenderer extends AbstractRenderer
                     class="data-store" style="display: none"></div>
             <div class="actionbuttons-bar">
                 <?php if (true === $a['showActionButtons']): ?>
-                    <?php foreach ($a['actionButtons'] as $id => $actionButton): ?>
+                    <?php foreach ($a['actionButtons'] as $id => $actionButton):
+                        if (array_key_exists("useSelectedRows", $actionButton) && true === $actionButton['useSelectedRows']) {
+                            $actionButton['textUseSelectedRowsEmptyWarning'] = $a['textUseSelectedRowsEmptyWarning'];
+                        }
+                        ?>
                         <button class="actionbutton-button"
                             <?php echo DataTableRendererUtil::toDataAttributes($actionButton); ?>
-                                data-id="<?php echo $id; ?>"><?php echo $actionButton['label']; ?></button>
+                                data-id="<?php echo $id; ?>">
+                            <?php if (array_key_exists('icon', $actionButton)): ?>
+                                <i><?php echo $actionButton['icon']; ?></i>
+                            <?php endif; ?>
+                            <?php echo $actionButton['label']; ?>
+                        </button>
                     <?php endforeach ?>
                 <?php endif; ?>
             </div>
@@ -162,12 +171,20 @@ class DataTableRenderer extends AbstractRenderer
                 </tbody>
             </table>
 
-            <?php if (true === $a['showBulkActions']): ?>
+            <?php if (true === $a['showBulkActions']):
+                $args = [
+                    'show' => $a['showEmptyBulkWarning'],
+                    'warning' => $a['textEmptyBulkWarning'],
+                ];
+                ?>
                 <div class="bulk-bar">
-                    <select class="bulk-selector">
+                    <select
+                        <?php echo DataTableRendererUtil::toDataAttributes($args); ?>
+                            class="bulk-selector">
                         <option value="0"><?php echo $a['textBulkActionsTeaser']; ?></option>
                         <?php foreach ($a['bulkActions'] as $identifier => $action): ?>
-                            <option data-id="<?php echo $identifier; ?>" <?php echo DataTableRendererUtil::toDataAttributes($action); ?> value="<?php echo $identifier; ?>"><?php echo $action['label']; ?></option>
+                            <option data-id="<?php echo $identifier; ?>" <?php echo DataTableRendererUtil::toDataAttributes($action); ?>
+                                    value="<?php echo $identifier; ?>"><?php echo $action['label']; ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
@@ -234,7 +251,11 @@ class DataTableRenderer extends AbstractRenderer
     {
         $label = (array_key_exists('label', $data)) ? $data['label'] : "";
         $icon = (array_key_exists('icon', $data)) ? $data['icon'] : "";
-        return '<button class="special-link" ' . DataTableRendererUtil::toDataAttributes($data) . '>' . $label . '</button>';
+        $s = '<button class="special-link" ' . DataTableRendererUtil::toDataAttributes($data) . '>';
+        $s .= $icon . " ";
+        $s .= $label;
+        $s .= '</button>';
+        return $s;
     }
 
     protected function onError($msg)

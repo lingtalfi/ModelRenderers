@@ -117,6 +117,7 @@ class DataTableRenderer extends AbstractRenderer
                         <?php endforeach; ?>
                         <td>
                             <button class="search-button"><?php echo $a['textSearch']; ?></button>
+                            <button class="search-clear-button"><?php echo $a['textSearchClear']; ?></button>
                         </td>
                     </tr>
                 <?php endif; ?>
@@ -166,7 +167,7 @@ class DataTableRenderer extends AbstractRenderer
                     <select class="bulk-selector">
                         <option value="0"><?php echo $a['textBulkActionsTeaser']; ?></option>
                         <?php foreach ($a['bulkActions'] as $identifier => $action): ?>
-                            <option value="<?php echo $identifier; ?>"><?php echo $action['label']; ?></option>
+                            <option data-id="<?php echo $identifier; ?>" <?php echo DataTableRendererUtil::toDataAttributes($action); ?> value="<?php echo $identifier; ?>"><?php echo $action['label']; ?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
@@ -202,7 +203,7 @@ class DataTableRenderer extends AbstractRenderer
         }
         for ($i = 1; $i <= $nbPages; $i++) {
             $class = ((int)$i === (int)$model['page']) ? 'selected' : "";
-            $s .= '<a class="pagination-link ' . $class . '" href="#">' . $i . '</a>';
+            $s .= '<a data-id="' . $i . '" class="pagination-link ' . $class . '" href="#">' . $i . '</a>';
         }
         return $s;
     }

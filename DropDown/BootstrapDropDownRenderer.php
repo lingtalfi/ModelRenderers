@@ -44,7 +44,7 @@ class BootstrapDropDownRenderer extends DropDownRenderer
                     type="button" aria-expanded="false">
 
                 <?php if (array_key_exists('icon', $m)): ?>
-                    <span class="<?php echo $m['icon']; ?>"></span>
+                    <span class="<?php echo $m['icon']; ?>"></span>&nbsp;
                 <?php endif; ?>
 
                 <?php echo $m['text']; ?> <span class="caret"></span>

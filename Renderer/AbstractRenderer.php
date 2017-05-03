@@ -4,7 +4,7 @@
 namespace ModelRenderers\Renderer;
 
 
-abstract class AbstractRenderer implements RendererInterface
+abstract class AbstractRenderer implements ModelAwareRendererInterface
 {
     protected $model;
 

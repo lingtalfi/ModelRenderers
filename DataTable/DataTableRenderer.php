@@ -40,9 +40,8 @@ class DataTableRenderer extends AbstractRenderer
         $storeAttr = DataTableRendererUtil::getStoreAttributes($a);
         ?>
         <div class="datatable_wrapper">
-            <div
-                <?php echo DataTableRendererUtil::toDataAttributes($storeAttr); ?>
-                    class="data-store" style="display: none"></div>
+            <div <?php echo DataTableRendererUtil::toDataAttributes($storeAttr); ?> class="data-store" style="display: none"></div>
+
             <div class="actionbuttons-bar">
                 <?php if (true === $a['showActionButtons']): ?>
                     <?php foreach ($a['actionButtons'] as $id => $actionButton):

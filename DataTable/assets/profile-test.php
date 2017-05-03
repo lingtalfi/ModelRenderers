@@ -95,5 +95,7 @@ $profile = [
         'textBulkActionsTeaser' => 'For selected entries',
         'textEmptyBulkWarning' => 'Please select at least one row',
         'textUseSelectedRowsEmptyWarning' => 'Please select at least one row',
+        'textPaginationPrev' => 'Prev',
+        'textPaginationNext' => 'Next',
     ],
 ];

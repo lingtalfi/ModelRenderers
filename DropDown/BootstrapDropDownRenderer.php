@@ -4,11 +4,19 @@
 namespace ModelRenderers\DropDown;
 
 
-
 use ModelRenderers\ActionLink\ActionLinkRenderer;
 
 class BootstrapDropDownRenderer extends DropDownRenderer
 {
+
+
+    protected $linkAttributes;
+
+
+    public function __construct()
+    {
+        $this->linkAttributes = [];
+    }
 
     public static function create()
     {
@@ -47,7 +55,7 @@ class BootstrapDropDownRenderer extends DropDownRenderer
                     <?php if ('divider' === $item): ?>
                         <li class="divider"></li>
                     <?php else: ?>
-                        <li><?php echo ActionLinkRenderer::create()->setModel($item)->render(); ?></li>
+                        <li><?php echo ActionLinkRenderer::create()->setAttr($this->linkAttributes)->setModel($item)->render(); ?></li>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </ul>
@@ -55,5 +63,10 @@ class BootstrapDropDownRenderer extends DropDownRenderer
         <?php
     }
 
+
+
+    //--------------------------------------------
+    //
+    //--------------------------------------------
 
 }

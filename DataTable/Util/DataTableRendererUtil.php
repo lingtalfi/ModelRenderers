@@ -123,4 +123,47 @@ class DataTableRendererUtil
         }
         return $ret;
     }
+
+
+    public static function getPaginationMinMax(array $model)
+    {
+        if ('all' !== $model['nipp']) {
+            $nbPages = ceil($model['nbTotalItems'] / $model['nipp']);
+            $page = $model['page'];
+            $length = $model['paginationLength'];
+
+            if (1 === ($length % 2)) {
+                $firstHalfLength = floor($length / 2);
+                $secondHalfLength = $firstHalfLength;
+            } else {
+                $firstHalfLength = ($length / 2) - 1;
+                $secondHalfLength = $firstHalfLength + 1;
+            }
+
+            $min = $page - $firstHalfLength;
+            $max = $page + $secondHalfLength;
+
+            if ($min < 1) {
+                $offset = 1 - $min;
+                $min = 1;
+                $max += $offset;
+            } elseif ($max > $nbPages) {
+                $offset = $max - $nbPages;
+                $min -= $offset;
+                $max = $nbPages;
+            }
+
+            if ($max > $nbPages) {
+                $max = $nbPages;
+            }
+
+            if ($min < 1) {
+                $min = 1;
+            }
+
+            return [$min, $max];
+        } else {
+            return [1, 1];
+        }
+    }
 }

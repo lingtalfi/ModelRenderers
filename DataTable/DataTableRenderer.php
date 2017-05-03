@@ -40,7 +40,8 @@ class DataTableRenderer extends AbstractRenderer
         $storeAttr = DataTableRendererUtil::getStoreAttributes($a);
         ?>
         <div class="datatable_wrapper">
-            <div <?php echo DataTableRendererUtil::toDataAttributes($storeAttr); ?> class="data-store" style="display: none"></div>
+            <div <?php echo DataTableRendererUtil::toDataAttributes($storeAttr); ?> class="data-store"
+                                                                                    style="display: none"></div>
 
             <div class="actionbuttons-bar">
                 <?php if (true === $a['showActionButtons']): ?>
@@ -212,17 +213,42 @@ class DataTableRenderer extends AbstractRenderer
     protected function renderPagination(array $model)
     {
         $s = '';
-        if ('all' !== $model['nipp']) {
-            $nbPages = ceil($model['nbTotalItems'] / $model['nipp']);
-        } else {
-            $nbPages = 1;
+        $navigators = $model['paginationNavigators'];
+
+        if (in_array('first', $navigators, true)) {
+            $s .= '<a data-id="1" class="pagination-first" href="#">' . $model['textPaginationFirst'] . '</a>';
         }
-        for ($i = 1; $i <= $nbPages; $i++) {
+        if (in_array('prev', $navigators, true)) {
+            $prev = $model['page'] - 1;
+            if ($prev < 1) {
+                $prev = 1;
+            }
+            $s .= '<a data-id="' . $prev . '" class="pagination-prev" href="#">' . $model['textPaginationPrev'] . '</a>';
+        }
+
+        $nbPages = ceil($model['nbTotalItems'] / $model['nipp']);
+
+        list($min, $max) = DataTableRendererUtil::getPaginationMinMax($model);
+        $a = [];
+        for ($i = $min; $i <= $max; $i++) {
             $class = ((int)$i === (int)$model['page']) ? 'selected' : "";
-            $s .= '<a data-id="' . $i . '" class="pagination-link ' . $class . '" href="#">' . $i . '</a>';
+            $a[] = '<a data-id="' . $i . '" class="pagination-link ' . $class . '" href="#">' . $i . '</a>';
+        }
+        $s .= implode(' - ', $a);
+
+        if (in_array('next', $navigators, true)) {
+            $next = $model['page'] + 1;
+            if ($next > $nbPages) {
+                $next = $nbPages;
+            }
+            $s .= '<a data-id="' . $next . '" class="pagination-next" href="#">' . $model['textPaginationNext'] . '</a>';
+        }
+        if (in_array('last', $navigators, true)) {
+            $s .= '<a data-id="' . $nbPages . '" class="pagination-last" href="#">' . $model['textPaginationLast'] . '</a>';
         }
         return $s;
     }
+
 
     protected function renderRowSpecial(array $special, array $row)
     {
@@ -261,4 +287,6 @@ class DataTableRenderer extends AbstractRenderer
     {
         throw new \Exception("DataTableRenderer error: " . $msg);
     }
+
+
 }

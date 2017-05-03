@@ -31,6 +31,10 @@ Models are found here: https://github.com/lingtalfi/Models
 History Log
 ------------------
     
+- 1.3.0 -- 2017-05-03
+
+    - DataTableRenderer now understands paginationNavigators and paginationLength
+    
 - 1.2.1 -- 2017-05-02
 
     - add DataTableRenderer assets

@@ -149,7 +149,8 @@ class DataTableRenderer extends AbstractRenderer
                                 </td>
                             <?php endif; ?>
 
-                            <?php foreach ($row as $k => $v):
+                            <?php foreach ($columns as $k => $label):
+                                $v = $row[$k];
                                 $style = (in_array($k, $a['hidden'])) ? ' style="display: none"' : '';
                                 ?>
                                 <?php if (is_array($v)): ?>

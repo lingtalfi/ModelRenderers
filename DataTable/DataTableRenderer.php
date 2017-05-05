@@ -23,6 +23,7 @@ class DataTableRenderer extends AbstractRenderer
         $a = $this->model;
 //        a($a);
 
+        $columns = $a['headers'];
         $visibleColumns = $a['headers'];
         foreach ($a['hidden'] as $columnId) {
             unset($visibleColumns[$columnId]);
@@ -83,8 +84,10 @@ class DataTableRenderer extends AbstractRenderer
                     <?php endif; ?>
 
 
-                    <?php foreach ($visibleColumns as $columnId => $label): ?>
-                        <th>
+                    <?php foreach ($columns as $columnId => $label):
+                        $style = (in_array($columnId, $a['hidden'])) ? ' style="display: none"' : '';
+                        ?>
+                        <th<?php echo $style; ?>>
                             <?php if (true === $a['isSortable'] && false === in_array($columnId, $a['unsortable'], true)): ?>
 
                                 <?php
@@ -94,6 +97,7 @@ class DataTableRenderer extends AbstractRenderer
                                     $dir = $a["sortValues"][$columnId];
                                 }
                                 $class .= ' sort-' . $dir;
+
                                 ?>
                                 <a data-id="<?php echo $columnId; ?>" href="#" class="<?php echo $class; ?>">
                                     <?php echo $label; ?>
@@ -113,8 +117,10 @@ class DataTableRenderer extends AbstractRenderer
                         <?php if (true === $a['checkboxes']): ?>
                             <td></td>
                         <?php endif; ?>
-                        <?php foreach ($visibleColumns as $columnId => $label): ?>
-                            <td>
+                        <?php foreach ($columns as $columnId => $label):
+                            $style = (in_array($columnId, $a['hidden'])) ? ' style="display: none"' : '';
+                            ?>
+                            <td<?php echo $style; ?>>
                                 <?php if (false === in_array($columnId, $a['unsearchable'])): ?>
                                     <?php
                                     $val = (array_key_exists($columnId, $a['searchValues'])) ? $a['searchValues'][$columnId] : "";
@@ -143,14 +149,14 @@ class DataTableRenderer extends AbstractRenderer
                                 </td>
                             <?php endif; ?>
 
-                            <?php foreach ($row as $k => $v): ?>
-                                <?php if (array_key_exists($k, $visibleColumns)): ?>
-                                    <?php if (is_array($v)): ?>
-                                        <td><?php echo $this->renderRowSpecial($v, $row); ?></td>
-                                    <?php else: ?>
-                                        <td><?php echo $v; ?></td>
-                                    <?php endif; ?>
-                                <?php endif; ?>
+                            <?php foreach ($row as $k => $v):
+                                $style = (in_array($k, $a['hidden'])) ? ' style="display: none"' : '';
+                                ?>
+                                <?php if (is_array($v)): ?>
+                                <td<?php echo $style; ?>><?php echo $this->renderRowSpecial($v, $row); ?></td>
+                            <?php else: ?>
+                                <td<?php echo $style; ?>><?php echo $v; ?></td>
+                            <?php endif; ?>
                             <?php endforeach ?>
 
 
@@ -266,7 +272,7 @@ class DataTableRenderer extends AbstractRenderer
                 }
                 break;
             default:
-                $this->onError("Unknown special type: $type");
+                $this->onWarning("Unknown special type: $type");
                 break;
         }
         return $s;
@@ -286,6 +292,11 @@ class DataTableRenderer extends AbstractRenderer
     protected function onError($msg)
     {
         throw new \Exception("DataTableRenderer error: " . $msg);
+    }
+
+    protected function onWarning($msg)
+    {
+
     }
 
 

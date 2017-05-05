@@ -31,6 +31,10 @@ Models are found here: https://github.com/lingtalfi/Models
 History Log
 ------------------
     
+- 1.6.0 -- 2017-05-05
+
+    - fix DataTableRenderer hidden hide using css instead of removing
+    
 - 1.5.1 -- 2017-05-03
 
     - add DropDownRenderer.linkAttributes and ActionLinkRenderer.attr

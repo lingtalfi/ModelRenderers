@@ -84,7 +84,8 @@ class DataTableRenderer extends AbstractRenderer
                     <?php endif; ?>
 
 
-                    <?php foreach ($columns as $columnId => $label):
+                    <?php foreach ($columns as $columnId):
+                        $label = $this->getLabel($columnId);
                         $style = (in_array($columnId, $a['hidden'])) ? ' style="display: none"' : '';
                         ?>
                         <th<?php echo $style; ?>>
@@ -117,7 +118,7 @@ class DataTableRenderer extends AbstractRenderer
                         <?php if (true === $a['checkboxes']): ?>
                             <td></td>
                         <?php endif; ?>
-                        <?php foreach ($columns as $columnId => $label):
+                        <?php foreach ($columns as $columnId ):
                             $style = (in_array($columnId, $a['hidden'])) ? ' style="display: none"' : '';
                             ?>
                             <td<?php echo $style; ?>>
@@ -149,7 +150,7 @@ class DataTableRenderer extends AbstractRenderer
                                 </td>
                             <?php endif; ?>
 
-                            <?php foreach ($columns as $k => $label):
+                            <?php foreach ($columns as $k):
                                 $v = $row[$k];
                                 $style = (in_array($k, $a['hidden'])) ? ' style="display: none"' : '';
                                 ?>
@@ -300,5 +301,11 @@ class DataTableRenderer extends AbstractRenderer
 
     }
 
+    protected function getLabel($columnId){
+        /**
+         * Override this to use the translation mechanism of your app
+         */
+        return $columnId;
+    }
 
 }

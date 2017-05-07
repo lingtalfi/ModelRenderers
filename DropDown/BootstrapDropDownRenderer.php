@@ -63,10 +63,4 @@ class BootstrapDropDownRenderer extends DropDownRenderer
         <?php
     }
 
-
-
-    //--------------------------------------------
-    //
-    //--------------------------------------------
-
 }

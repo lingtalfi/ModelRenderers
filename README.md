@@ -31,6 +31,10 @@ Models are found here: https://github.com/lingtalfi/Models
 History Log
 ------------------
     
+- 1.7.1 -- 2017-05-07
+
+    - fix DataTableRendererUtil headers
+    
 - 1.7.0 -- 2017-05-06
 
     - adapt DataTableRenderer to new model

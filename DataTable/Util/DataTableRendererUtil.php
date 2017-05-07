@@ -103,12 +103,12 @@ class DataTableRendererUtil
 
         $ret = [
             'ric' => implode(',', $model['ric']),
-            'columns' => implode(',', array_keys($model['headers'])),
+            'columns' => implode(',', $model['headers']),
             'page' => $model['page'],
             'nipp' => $model['nipp'],
             'textUseSelectedRowsEmptyWarning' => $model['textUseSelectedRowsEmptyWarning'],
         ];
-        foreach ($model['headers'] as $columnId => $label) {
+        foreach ($model['headers'] as $columnId) {
             $sort = 'none';
             if (array_key_exists($columnId, $model['sortValues'])) {
                 $sort = $model['sortValues'][$columnId];

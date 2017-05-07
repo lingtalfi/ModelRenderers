@@ -148,11 +148,13 @@
         }
 
         function refresh(jElem, newData) {
+
             var profileId = jElem.attr('data-id');
 
 
             var data = {
-                id: profileId
+                id: profileId,
+                renderer: options.renderer
             };
 
 
@@ -162,6 +164,7 @@
             else {
                 data = getStoreData(jElem);
                 data.id = profileId;
+                data.renderer = options.renderer;
             }
 
 
@@ -304,6 +307,9 @@
                             }
                         });
                     }, 'json');
+                }
+                else if('link' === data.type){
+                    window.location.href = data.uri;
                 }
             };
             if (1 === data.confirm) {
@@ -515,6 +521,7 @@
 
     $.fn.dataTable.defaults = {
         uri: "/datatable-handler",
+        renderer: 'ModelRenderers\\DataTable\\DataTableRenderer',
         /**
          * @param type: error|success
          */

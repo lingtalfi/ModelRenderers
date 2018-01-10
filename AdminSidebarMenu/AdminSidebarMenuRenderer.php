@@ -31,8 +31,10 @@ class AdminSidebarMenuRenderer extends AbstractRenderer
     public function render()
     {
         $m = $this->model;
-        foreach ($m['sections'] as $section) {
-            $this->renderSection($section);
+        if (array_key_exists('sections', $m)) {
+            foreach ($m['sections'] as $section) {
+                $this->renderSection($section);
+            }
         }
     }
 

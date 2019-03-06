@@ -1,10 +1,10 @@
 <?php
 
 
-namespace ModelRenderers\AdminSidebarMenu;
+namespace Ling\ModelRenderers\AdminSidebarMenu;
 
 
-use ModelRenderers\Renderer\AbstractRenderer;
+use Ling\ModelRenderers\Renderer\AbstractRenderer;
 
 class AdminSidebarMenuRenderer extends AbstractRenderer
 {

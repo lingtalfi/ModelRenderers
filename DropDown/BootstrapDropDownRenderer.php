@@ -1,10 +1,10 @@
 <?php
 
 
-namespace ModelRenderers\DropDown;
+namespace Ling\ModelRenderers\DropDown;
 
 
-use ModelRenderers\ActionLink\ActionLinkRenderer;
+use Ling\ModelRenderers\ActionLink\ActionLinkRenderer;
 
 class BootstrapDropDownRenderer extends DropDownRenderer
 {

@@ -1,11 +1,11 @@
 <?php
 
 
-namespace ModelRenderers\ActionLink;
+namespace Ling\ModelRenderers\ActionLink;
 
 
-use Bat\StringTool;
-use ModelRenderers\Renderer\AbstractRenderer;
+use Ling\Bat\StringTool;
+use Ling\ModelRenderers\Renderer\AbstractRenderer;
 
 class ActionLinkRenderer extends AbstractRenderer
 {

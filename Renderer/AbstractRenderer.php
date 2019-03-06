@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ModelRenderers\Renderer;
+namespace Ling\ModelRenderers\Renderer;
 
 
 abstract class AbstractRenderer implements ModelAwareRendererInterface

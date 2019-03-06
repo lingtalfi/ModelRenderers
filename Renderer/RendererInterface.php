@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ModelRenderers\Renderer;
+namespace Ling\ModelRenderers\Renderer;
 
 
 interface RendererInterface

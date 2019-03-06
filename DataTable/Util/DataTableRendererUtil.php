@@ -1,10 +1,10 @@
 <?php
 
 
-namespace ModelRenderers\DataTable\Util;
+namespace Ling\ModelRenderers\DataTable\Util;
 
 
-use Bat\StringTool;
+use Ling\Bat\StringTool;
 
 class DataTableRendererUtil
 {

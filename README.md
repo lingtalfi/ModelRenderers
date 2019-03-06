@@ -14,7 +14,7 @@ Install
 ==========
 Using the [uni](https://github.com/lingtalfi/universe-naive-importer) command.
 ```bash
-uni import ModelRenderers
+uni import Ling/ModelRenderers
 ```
 
 Or just download it and place it where you want otherwise.

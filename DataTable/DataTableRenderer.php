@@ -1,11 +1,11 @@
 <?php
 
 
-namespace ModelRenderers\DataTable;
+namespace Ling\ModelRenderers\DataTable;
 
 
-use ModelRenderers\DataTable\Util\DataTableRendererUtil;
-use ModelRenderers\Renderer\AbstractRenderer;
+use Ling\ModelRenderers\DataTable\Util\DataTableRendererUtil;
+use Ling\ModelRenderers\Renderer\AbstractRenderer;
 
 class DataTableRenderer extends AbstractRenderer
 {

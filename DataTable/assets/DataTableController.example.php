@@ -8,14 +8,14 @@ use Core\Controller\ApplicationController;
 use Core\Services\X;
 use Kamille\Architecture\Response\Web\JsonResponse;
 use Kamille\Services\XLog;
-use ModelRenderers\DataTable\DataTableRenderer;
-use ModelRenderers\Renderer\ModelAwareRendererInterface;
-use Models\DataTable\DataTableModel;
+use Ling\ModelRenderers\DataTable\DataTableRenderer;
+use Ling\ModelRenderers\Renderer\ModelAwareRendererInterface;
+use Ling\Models\DataTable\DataTableModel;
 use Module\DataTable\DataTableProfileFinder\DataTableProfileFinderInterface;
-use RowsGenerator\ArrayRowsGenerator;
-use RowsGenerator\QuickPdoRowsGenerator;
-use RowsGenerator\RowsGeneratorInterface;
-use RowsGenerator\Util\RowsTransformerUtil;
+use Ling\RowsGenerator\ArrayRowsGenerator;
+use Ling\RowsGenerator\QuickPdoRowsGenerator;
+use Ling\RowsGenerator\RowsGeneratorInterface;
+use Ling\RowsGenerator\Util\RowsTransformerUtil;
 
 class DataTableController extends ApplicationController
 {

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace ModelRenderers\AdminSidebarMenu;
+namespace Ling\ModelRenderers\AdminSidebarMenu;
 
 
 class BootstrapAdminSidebarMenuRenderer extends AdminSidebarMenuRenderer

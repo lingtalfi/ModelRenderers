@@ -1,11 +1,11 @@
 <?php
 
 
-namespace ModelRenderers\DropDown;
+namespace Ling\ModelRenderers\DropDown;
 
 
 
-use ModelRenderers\Renderer\AbstractRenderer;
+use Ling\ModelRenderers\Renderer\AbstractRenderer;
 
 abstract class DropDownRenderer extends AbstractRenderer
 {
